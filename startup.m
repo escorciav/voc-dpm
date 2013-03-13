@@ -25,8 +25,9 @@ if isempty(G_STARTUP)
           'model', 'features', 'vis', ...
           'data', 'train', 'test', ...
           'external', 'star-cascade'};
+  pth = mfilename('fullpath');
   for i = 1:length(incl)
-    addpath(genpath(incl{i}));
+    addpath(genpath([pth(1:end-7) incl{i}]));
   end
   conf = voc_config();
   fprintf('%s is set up\n', conf.version);

@@ -448,7 +448,7 @@ for t = 1:iter
     reopen_parallel_pool(pool_size);
   end
 end
-
+end
 
 % get positive examples by warping positive bounding boxes
 % we create virtual examples by flipping each image left to right
@@ -486,6 +486,7 @@ for i = 1:numpos
   write_zero_fv(true, key);
   num_entries = num_entries + 2;
   num_examples = num_examples + 1;
+end
 end
 
 
@@ -577,6 +578,7 @@ for i = 1:batchsize:numpos
     end
   end
 end
+end
 
 
 % get hard negative examples
@@ -637,7 +639,7 @@ for i = 1:batchsize:numneg
     break;
   end
 end
-
+end
 
 % get random negative examples
 function [num_entries, num_examples] ...
@@ -677,7 +679,7 @@ for i = 1:numneg
     num_examples = num_examples + rndneg;
   end
 end
-
+end
 
 function info = info_to_struct(in)
 I_SCORE     = 1;
@@ -703,7 +705,7 @@ info.margins      = in(:, I_MARGIN);
 info.is_belief    = in(:, I_IS_BELIEF);
 info.is_zero      = in(:, I_IS_ZERO);
 info.is_mined     = in(:, I_IS_MINED);
-
+end
 
 function [num_entries, num_examples] = info_stats(info, I)
 % Count the number of examples listed in an info file
@@ -717,7 +719,7 @@ keys = [info.dataid(I) info.scale(I) info.x(I) info.y(I)];
 unique_keys = unique(keys, 'rows');
 num_examples = size(unique_keys, 1);
 num_entries = length(I);
-
+end
 
 % collect filter usage statistics
 function u = getfusage(bs)
@@ -732,7 +734,7 @@ for i = 1:numfilters
   ndel = sum((x1 == 0) .* (x2 == 0) .* (y1 == 0) .* (y2 == 0));
   u(i) = nbs - ndel;
 end
-
+end
 
 function s = close_parallel_pool()
 try
@@ -743,7 +745,7 @@ try
 catch
   s = 0;
 end
-
+end
 
 function reopen_parallel_pool(s)
 if s > 0
@@ -757,11 +759,12 @@ if s > 0
     end
   end
 end
-
+end
 
 function s = try_get_matlabpool_size()
 try
   s = matlabpool('size');
 catch
   s = 0;
+end
 end

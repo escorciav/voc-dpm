@@ -59,23 +59,24 @@ for j = 1:maxiter
     bestv = v;
   end
 end
+end
+
+% useful for visualizing component:
+% if ~exist(['/tmp/' conf.project],'dir'), mkdir(['/tmp/' conf.project]); end
+% for i = 1:2:numel(warped)
+%  imwrite(uint8(warped{i}),['/tmp/' conf.project '/' num2str(i) '.png']);
+% end
 
 % useful for visualizing clusters:
-%
+%if ~exist(['/tmp/' conf.project '/A/'],'dir'), mkdir(['/tmp/' conf.project '/A/']); end
 %for i = A
-%  imagesc(uint8(warped{i}));
-%  axis image;
-%  title('A');
-%  pause(0.5);
+%  imwrite(uint8(warped{i}),['/tmp/' conf.project '/A/' num2str(i) '.png']);
 %end
 
+%if ~exist(['/tmp/' conf.project '/B/'],'dir'), mkdir(['/tmp/' conf.project '/B/']); end
 %for i = B
-%  imagesc(uint8(warped{i}));
-%  axis image;
-%  title('B');
-%  pause(0.5);
+%  imwrite(uint8(warped{i}),['/tmp/' conf.project '/A/' num2str(i) '.png']);
 %end
-
 
 function [A B v] = cluster(pos)
 numpos = size(pos,1);
@@ -157,4 +158,5 @@ for j = 1:maxiter
     break;
   end
   prevv = v;
+end
 end
