@@ -19,7 +19,7 @@ function dataset2VOC(dataset,directory,conf)
 %   conf          structure with parameters
 %     ext         image extension. ['.jpg']
 %     action      move (mv) or copy (cp) the images. ['cp']
-%     func        function to read annotations. ['readMyOwnAnnot']
+%     func        handle function to read annotations. [@readMyOwnAnnot]
 %     folder      string with folder name inside dataset where are allocated
 %                 the images e.g. 'images/1'. If empty find for all images in dataset. []
 %     year        replace XXXX. ['2013']
@@ -43,7 +43,7 @@ function dataset2VOC(dataset,directory,conf)
 
 % format e.g. PAMI2009
 
-dflt = {'action','cp','ext','.jpg','func','readMyOwnAnnot','folder',[],'year','2013','dsname',[]};
+dflt = {'action','cp','ext','.jpg','func',@readMyOwnAnnot,'folder',[],'year','2013','dsname',[]};
 conf = getPrmDflt(conf,dflt);
 
 createVOCfolder([directory '/VOCdevkit'],conf.year);

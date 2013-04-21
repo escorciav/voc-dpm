@@ -1,4 +1,5 @@
 function annot = readMyOwnAnnot(imgpath,dsname)
+% !!! callback function used by dataset2VOC function !!!
 % Read the annotation file associated with an image and create an strcuture
 % with VOC format.
 %   annot = readMyOwnAnnot('~/data/1.jpg','CVPRdata');

@@ -9,9 +9,7 @@ function extpath = getAllEXTFiles(folder,ext,subfolder)
 %   ext           file extension e.g. '.jpg'
 %     
 
-% AUTORIGHTS% REQUIEREMENTS
-%   Piotr toolbox     -   getPrmDflt
-%   Pascal VOC        -   VOCwritexml   (added in my github voc-dpm version)
+% AUTORIGHTS
 % -------------------------------------------------------
 % Copyright (C) 2013 Victor Escorcia
 % 
